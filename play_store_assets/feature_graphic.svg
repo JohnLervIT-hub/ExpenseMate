@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 500" width="1024" height="500" preserveAspectRatio="xMidYMid meet" overflow="hidden">
+  <defs>
+    <clipPath id="frameClip">
+      <rect x="0" y="0" width="1024" height="500"/>
+    </clipPath>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#8B7CE0"/>
+      <stop offset="55%" stop-color="#6750A4"/>
+      <stop offset="100%" stop-color="#3E2A7A"/>
+    </linearGradient>
+    <linearGradient id="tile" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#A899EA"/>
+      <stop offset="55%" stop-color="#6750A4"/>
+      <stop offset="100%" stop-color="#3E2A7A"/>
+    </linearGradient>
+    <linearGradient id="shine" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.55"/>
+      <stop offset="45%" stop-color="#FFFFFF" stop-opacity="0.08"/>
+      <stop offset="100%" stop-color="#FFFFFF" stop-opacity="0"/>
+    </linearGradient>
+    <filter id="tileShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="10" stdDeviation="14" flood-color="#1E1440" flood-opacity="0.45"/>
+    </filter>
+  </defs>
+
+  <g clip-path="url(#frameClip)">
+    <rect width="1024" height="500" fill="url(#bg)"/>
+
+    <!-- Logo tile -->
+    <g transform="translate(80 130)">
+      <rect x="0" y="0" width="240" height="240" rx="62" ry="62" fill="url(#tile)" filter="url(#tileShadow)"/>
+      <rect x="0" y="0" width="240" height="240" rx="62" ry="62" fill="url(#shine)"/>
+      <circle cx="120" cy="120" r="76" fill="none" stroke="#FFFFFF" stroke-opacity="0.16" stroke-width="6"/>
+      <g fill="#FFFFFF" transform="translate(52 60)">
+        <rect x="0" y="0" width="90" height="16" rx="8"/>
+        <rect x="0" y="52" width="64" height="16" rx="8"/>
+        <rect x="0" y="104" width="90" height="16" rx="8"/>
+        <rect x="0" y="0" width="16" height="120" rx="8"/>
+      </g>
+      <g transform="translate(170 96)">
+        <circle r="20" fill="#F6C445"/>
+        <text x="0" y="6" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-weight="900" font-size="22" fill="#3E2A7A">$</text>
+      </g>
+    </g>
+
+    <!-- Right side -->
+    <g font-family="Helvetica, Arial, sans-serif" fill="#FFFFFF">
+      <text x="380" y="200" font-weight="900" font-size="60">ExpenseMate</text>
+      <text x="380" y="255" font-weight="700" font-size="34" fill="#F1E9FF">Track. Budget. Save.</text>
+      <text x="380" y="310" font-weight="500" font-size="20" fill="#FFFFFF" opacity="0.9">Fully offline · No subscription</text>
+    </g>
+  </g>
+</svg>

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    <linearGradient id="tile" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#8B7CE0"/>
+      <stop offset="55%" stop-color="#6750A4"/>
+      <stop offset="100%" stop-color="#3E2A7A"/>
+    </linearGradient>
+    <linearGradient id="shine" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.55"/>
+      <stop offset="45%" stop-color="#FFFFFF" stop-opacity="0.08"/>
+      <stop offset="100%" stop-color="#FFFFFF" stop-opacity="0"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0.3" cy="0.25" r="0.8">
+      <stop offset="0%" stop-color="#F1E9FF" stop-opacity="0.8"/>
+      <stop offset="60%" stop-color="#F1E9FF" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="softShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="14" stdDeviation="18" flood-color="#3E2A7A" flood-opacity="0.35"/>
+    </filter>
+  </defs>
+
+  <!-- Card / tile -->
+  <rect x="32" y="32" width="448" height="448" rx="112" ry="112" fill="url(#tile)" filter="url(#softShadow)"/>
+  <rect x="32" y="32" width="448" height="448" rx="112" ry="112" fill="url(#shine)"/>
+  <rect x="32" y="32" width="448" height="448" rx="112" ry="112" fill="url(#glow)"/>
+
+  <!-- Coin / letter "E" mark -->
+  <g transform="translate(256 256)">
+    <!-- Ring -->
+    <circle r="140" fill="none" stroke="#FFFFFF" stroke-opacity="0.16" stroke-width="10"/>
+    <!-- E monogram -->
+    <g fill="#FFFFFF" transform="translate(-84 -110)">
+      <rect x="0" y="0" width="168" height="30" rx="15"/>
+      <rect x="0" y="95" width="120" height="30" rx="15"/>
+      <rect x="0" y="190" width="168" height="30" rx="15"/>
+      <rect x="0" y="0" width="30" height="220" rx="15"/>
+    </g>
+    <!-- Small dollar accent -->
+    <g transform="translate(72 92)">
+      <circle r="36" fill="#F6C445"/>
+      <text x="0" y="12" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, sans-serif" font-weight="800" font-size="42" fill="#3E2A7A">$</text>
+    </g>
+  </g>
+</svg>

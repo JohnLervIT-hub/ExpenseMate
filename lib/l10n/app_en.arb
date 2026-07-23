@@ -1,0 +1,435 @@
+{
+    "@@locale": "en",
+
+    "appName": "ExpenseMate",
+
+    "navHome": "Home",
+    "navExpenses": "Expenses",
+    "navGrocery": "Grocery",
+    "navBudget": "Budget",
+    "navMore": "More",
+
+    "actionSave": "Save",
+    "actionCancel": "Cancel",
+    "actionDelete": "Delete",
+    "actionEdit": "Edit",
+    "actionDone": "Done",
+    "actionSkip": "Skip",
+    "actionNext": "Next",
+    "actionBack": "Back",
+    "actionAdd": "Add",
+    "actionSearch": "Search",
+    "actionRetry": "Retry",
+    "actionContinue": "Continue",
+    "actionGetStarted": "Get Started",
+    "actionAllow": "Allow",
+    "actionRemove": "Remove",
+    "actionUndo": "UNDO",
+    "actionReset": "Reset",
+
+    "commonToday": "Today",
+    "commonThisMonth": "This month",
+    "commonThisWeek": "This week",
+    "commonNextBill": "Next bill",
+    "commonUpcomingBills": "Upcoming bills",
+    "commonTransactions": "Transactions",
+    "commonRecentTransactions": "Recent Transactions",
+    "commonViewAll": "View all",
+    "commonOverspending": "Overspending — reduce discretionary categories.",
+    "commonPurchased": "Purchased",
+    "commonEstimated": "Estimated",
+    "commonTotal": "Total",
+    "commonActual": "Actual",
+    "commonEst": "Est.",
+    "commonAmount": "Amount",
+    "commonMerchant": "Merchant",
+    "commonDate": "Date",
+    "commonNotes": "Notes",
+    "commonCategory": "Category",
+    "commonDetails": "Details",
+    "commonReceipt": "Receipt",
+    "commonFavorite": "Favorite",
+    "commonActive": "Active",
+    "commonPaymentMethod": "Payment method",
+    "commonMonth": "Month",
+    "commonWeek": "Week",
+    "commonYear": "Year",
+
+    "dashboardTitle": "ExpenseMate",
+    "dashboardOverview": "Overview",
+    "dashboardMonthlyIncome": "Monthly Income",
+    "dashboardMonthlyExpenses": "Monthly Expenses",
+    "dashboardRemainingBudget": "Remaining Budget",
+    "dashboardSavings": "Savings",
+    "dashboardBudgetUtilization": "Budget Utilization",
+    "dashboardSpendingByCategory": "Spending by Category",
+    "dashboardMonthlyTrend": "Monthly Trend",
+    "dashboardQuickAdd": "Quick Add",
+    "dashboardScanReceipt": "Scan a receipt",
+    "dashboardScanReceiptSubtitle": "Auto-fills amount, merchant and date",
+    "dashboardEnterManually": "Enter manually",
+    "dashboardEnterManuallySubtitle": "Fill the expense form yourself",
+    "dashboardEmptyTitle": "No transactions yet",
+    "dashboardEmptySubtitle": "Tap Quick Add to log your first expense.",
+    "dashboardLiveDemo": "Live Demo — sample data",
+    "dashboardLiveDemoSubtitle": "Every transaction here is seeded. Buy the full source to make it yours.",
+
+    "expensesTitle": "Expenses",
+    "expensesAdd": "Add Expense",
+    "expensesEdit": "Edit Expense",
+    "expensesEmptyTitle": "No expenses found",
+    "expensesEmptySubtitle": "Try changing filters or tap + to add one.",
+    "expensesFilter": "Filter",
+    "expensesDeleted": "Expense deleted",
+    "expensesDeleteConfirmTitle": "Delete expense?",
+    "expensesDeleteConfirmBody": "This will remove the expense.",
+    "expensesDuplicate": "Duplicate",
+    "expensesUnfavorite": "Unfavorite",
+    "expensesEnterAmount": "Enter an amount",
+    "expensesPickCategory": "Please pick a category",
+    "expensesSaveExpense": "Save Expense",
+    "expensesUpdateExpense": "Update Expense",
+    "expensesNoReceipt": "No receipt attached",
+    "expensesAttached": "Attached",
+    "expensesAttach": "Attach",
+
+    "budgetTitle": "Budget",
+    "budgetMonthlyPlan": "Monthly plan",
+    "budgetMonthlyIncomePlan": "Monthly income (plan)",
+    "budgetSpendingLimit": "Spending limit",
+    "budgetSavingsGoal": "Savings goal",
+    "budgetCategoryBudgets": "Category Budgets",
+    "budgetLogIncome": "Log Income",
+    "budgetSavePlan": "Save Plan",
+    "budgetSavingsProgress": "Savings progress",
+    "budgetSaved": "Budget saved",
+    "budgetActualIncome": "Actual income",
+    "budgetSpent": "Spent",
+    "budgetSource": "Source",
+    "budgetSalary": "Salary",
+    "budgetSetGoal": "Set a savings goal to track progress",
+
+    "groceryTitle": "Grocery",
+    "groceryYourLists": "Your lists",
+    "groceryEmptyTitle": "No shopping lists",
+    "groceryEmptySubtitle": "Create your first list to start tracking groceries.",
+    "groceryNewList": "New List",
+    "groceryNewShoppingList": "New Shopping List",
+    "groceryListName": "List name",
+    "groceryEnterName": "Enter a name",
+    "groceryMarkFavorite": "Mark as favorite",
+    "groceryCreateList": "Create List",
+    "groceryUpdated": "Updated",
+    "groceryDuplicate": "Duplicate",
+    "groceryArchive": "Archive",
+    "groceryEmptyItemsTitle": "No items yet",
+    "groceryEmptyItemsSubtitle": "Tap + to add your first item.",
+    "groceryAddItem": "Add Item",
+    "groceryEditItem": "Edit Item",
+    "groceryItemName": "Item name",
+    "groceryQty": "Qty",
+    "groceryUnit": "Unit",
+    "groceryStore": "Store",
+    "groceryDuplicateList": "Duplicate list",
+    "groceryDeleteList": "Delete list",
+
+    "reportsTitle": "Reports",
+    "reportsMonthly": "Monthly",
+    "reportsYearly": "Yearly",
+    "reportsCategory": "Category",
+    "reportsIncomeVsExpense": "Income vs Expense",
+    "reportsSavings": "Savings",
+    "reportsCsv": "CSV",
+    "reportsExcel": "Excel",
+    "reportsPdf": "PDF",
+    "reportsLastSixMonths": "Last 6 months",
+    "reportsExpensesByMonth": "Expenses by month",
+    "reportsIncomeByMonth": "Income by month",
+    "reportsIncomeMo": "Income (mo)",
+    "reportsExpensesMo": "Expenses (mo)",
+    "reportsSavingsPerMonth": "Savings per month",
+
+    "calendarTitle": "Calendar",
+    "calendarNothingOnDay": "Nothing on this day",
+    "calendarNothingOnDaySubtitle": "Tap a day with a dot to see transactions.",
+    "calendarTransactionsCount": "{count} transactions",
+    "@calendarTransactionsCount": {
+        "placeholders": {
+            "count": {
+                "type": "int"
+            }
+        }
+    },
+
+    "recurringTitle": "Recurring Expenses",
+    "recurringNewRule": "New Rule",
+    "recurringNewRuleTitle": "New Recurring Rule",
+    "recurringEditRule": "Edit Rule",
+    "recurringEmptyTitle": "No recurring rules yet",
+    "recurringEmptySubtitle": "Add subscriptions like Netflix, rent, or insurance. They'll auto-log on their due date.",
+    "recurringNext": "Next",
+    "recurringFrequency": "Frequency",
+    "recurringNextDue": "Next due",
+    "recurringEnterMerchant": "Enter a merchant",
+    "recurringCreateRule": "Create Rule",
+    "recurringSaveRule": "Save Rule",
+    "recurringDeleteRule": "Delete rule?",
+    "recurringDeleteBody": "This won't remove past expenses. {merchant} will just stop auto-logging.",
+    "@recurringDeleteBody": {
+        "placeholders": {
+            "merchant": {
+                "type": "String"
+            }
+        }
+    },
+    "recurringDaily": "Daily",
+    "recurringWeekly": "Weekly",
+    "recurringMonthly": "Monthly",
+    "recurringYearly": "Yearly",
+
+    "scanTitle": "Scan Receipt",
+    "scanPoint": "Point the camera at the receipt",
+    "scanAutoFill": "We'll read the total, merchant, and date automatically.",
+    "scanOpenCamera": "Open Camera",
+    "scanPickGallery": "Pick from Gallery",
+    "scanReading": "Reading receipt…",
+    "scanCantRead": "Could not read the receipt clearly. Try again or fill in the details manually.",
+    "scanWhatFound": "What we found",
+    "scanContinueForm": "Continue to expense form",
+    "scanRetake": "Retake",
+    "scanRead": "Read",
+    "scanItemsDetected": "{count} items detected",
+    "@scanItemsDetected": {
+        "placeholders": {
+            "count": {
+                "type": "int"
+            }
+        }
+    },
+    "scanFullListNote": "Full list will be saved to the expense notes.",
+    "scanReceiptItems": "Receipt items:",
+
+    "settingsTitle": "Settings",
+    "settingsAppearance": "Appearance",
+    "settingsSystem": "System",
+    "settingsLight": "Light",
+    "settingsDark": "Dark",
+    "settingsPreferences": "Preferences",
+    "settingsCurrency": "Currency",
+    "settingsLanguage": "Language",
+    "settingsDateFormat": "Date format",
+    "settingsFirstDayOfWeek": "First day of week",
+    "settingsSecurity": "Security",
+    "settingsSetPin": "Set PIN",
+    "settingsChangePin": "Change PIN",
+    "settingsPinEnabled": "PIN lock enabled",
+    "settingsPinDisabled": "App is unlocked",
+    "settingsRemovePin": "Remove PIN",
+    "settingsRemovePinBody": "The app will no longer be locked.",
+    "settingsBiometric": "Biometric unlock",
+    "settingsBiometricAvailable": "Face ID / Fingerprint",
+    "settingsBiometricUnavailable": "Not available on this device",
+    "settingsBiometricNeedsPin": "Set a PIN first to enable biometric unlock",
+    "settingsData": "Data",
+    "settingsBackup": "Backup & Restore",
+    "settingsReports": "Reports & Export",
+    "settingsResetDemo": "Reset demo data",
+    "settingsResetDemoSubtitle": "Wipe entries and reload the built-in demo dataset",
+    "settingsResetConfirmTitle": "Reset demo data?",
+    "settingsResetConfirmBody": "This wipes all expenses, income, budgets, and shopping lists, then reloads the built-in demo dataset. Your PIN, currency and theme are kept.",
+    "settingsResetSuccess": "Demo data reloaded",
+    "settingsAbout": "About",
+    "settingsVersion": "Version {version} · Offline-first · No cloud",
+    "@settingsVersion": {
+        "placeholders": {
+            "version": {
+                "type": "String"
+            }
+        }
+    },
+    "settingsNotifications": "Notifications",
+    "settingsDailyReminder": "Daily log reminder",
+    "settingsDailyReminderSubtitle": "Nudge at {time}",
+    "@settingsDailyReminderSubtitle": {
+        "placeholders": {
+            "time": {
+                "type": "String"
+            }
+        }
+    },
+    "settingsReminderTime": "Reminder time",
+    "settingsWeeklyReview": "Weekly review",
+    "settingsWeeklyReviewSubtitle": "Sunday 6 PM · spending recap",
+    "settingsBudgetAlerts": "Budget threshold alerts",
+    "settingsBudgetAlertsSubtitle": "Alert at 80% and 100% of category budgets",
+    "settingsBillReminders": "Bill reminders",
+    "settingsBillRemindersSubtitle": "1 day before recurring expenses",
+    "settingsChooseCurrency": "Choose currency",
+    "settingsCurrenciesAvailable": "{count} available",
+    "@settingsCurrenciesAvailable": {
+        "placeholders": {
+            "count": {
+                "type": "int"
+            }
+        }
+    },
+    "settingsChooseLanguage": "Choose language",
+
+    "onboardTrackTitle": "Every dollar, tracked",
+    "onboardTrackSubtitle": "Log expenses in seconds. Categorize, favorite, and attach receipts — all fully offline.",
+    "onboardGroceryTitle": "Grocery lists that work",
+    "onboardGrocerySubtitle": "Plan trips with estimated prices, tick items off in-store, and see the real total.",
+    "onboardSecurityTitle": "Locked behind Face ID",
+    "onboardSecuritySubtitle": "Optional 4-digit PIN and biometric unlock. Your finances stay for your eyes only.",
+    "onboardOwnDataTitle": "Your data, your device",
+    "onboardOwnDataSubtitle": "No accounts. No cloud. Backup and export whenever you want — you're in control.",
+    "onboardFreeTitle": "Free forever, always",
+    "onboardFreeSubtitle": "No subscription. No ads. No account. Just a premium finance tracker that works.",
+
+    "categoryGroceries": "Groceries",
+    "categoryFuel": "Fuel",
+    "categoryRent": "Rent",
+    "categoryUtilities": "Utilities",
+    "categoryDining": "Dining",
+    "categoryShopping": "Shopping",
+    "categoryEntertainment": "Entertainment",
+    "categoryHealthcare": "Healthcare",
+    "categoryTransportation": "Transportation",
+    "categoryInsurance": "Insurance",
+    "categoryEducation": "Education",
+    "categoryTravel": "Travel",
+    "categoryGifts": "Gifts",
+    "categoryMiscellaneous": "Miscellaneous",
+
+    "paymentCash": "Cash",
+    "paymentDebitCard": "Debit Card",
+    "paymentCreditCard": "Credit Card",
+    "paymentBankTransfer": "Bank Transfer",
+    "paymentDigitalWallet": "Digital Wallet",
+    "paymentOther": "Other",
+
+    "lockEnterPin": "Enter PIN",
+    "lockUnlock": "Unlock ExpenseMate",
+    "pinSetupTitle": "Set PIN",
+    "pinCreateSubtitle": "Create a 4-digit PIN to protect your data.",
+    "pinNew": "New PIN",
+    "pinConfirm": "Confirm PIN",
+    "pinSavePin": "Save PIN",
+    "pinMustBe4": "PIN must be exactly 4 digits",
+    "pinNoMatch": "PINs do not match",
+    "pinSet": "PIN set",
+
+    "commonAll": "All",
+    "commonAny": "Any",
+    "commonError": "Error",
+    "actionClear": "Clear",
+    "actionApply": "Apply",
+    "actionAttach": "Attach",
+    "expensesFavorites": "Favorites",
+    "expensesScanTooltip": "Scan receipt",
+    "expensesFilterDateRange": "Date range",
+    "moreLockNow": "Lock now",
+    "groceryDetailFallbackTitle": "List",
+    "backupExportDatabase": "Export Database",
+    "backupExportDatabaseBody": "Save a copy of your SQLite database locally and share it.",
+    "backupExportShare": "Export & Share",
+    "backupRestoreDatabase": "Restore Database",
+    "backupRestoreDatabaseBody": "Replace current data with a previous backup file.",
+    "backupRestore": "Restore",
+    "backupExportCsvTitle": "Export Expenses as CSV",
+    "backupExportCsvBody": "For spreadsheets or manual analysis.",
+    "backupExportExcelTitle": "Export Expenses as Excel",
+    "backupExportExcelBody": "XLSX file with all your expenses.",
+    "backupExportPdfTitle": "Export Expenses as PDF",
+    "backupExportPdfBody": "Formatted PDF report of your expenses.",
+    "backupRestoreConfirmTitle": "Restore backup?",
+    "backupRestoreConfirmBody": "This will replace your current data. You will need to restart the app afterward.",
+    "searchHint": "Search expenses, lists, notes…",
+    "searchTitleFallback": "Search everything",
+    "searchSubtitleFallback": "Find expenses, categories, shopping lists and notes.",
+    "searchNoExpenses": "No matching expenses",
+    "searchNoLists": "No matching lists",
+    "searchNoCategories": "No matching categories",
+    "searchShoppingLists": "Shopping Lists",
+    "searchCategories": "Categories",
+
+    "moreCalendarTitle": "Calendar",
+    "moreCalendarSubtitle": "See spending by day",
+    "moreReportsTitle": "Reports",
+    "moreReportsSubtitle": "Charts and export",
+    "moreRecurringTitle": "Recurring Expenses",
+    "moreRecurringSubtitle": "Auto-log rent, subscriptions & more",
+    "moreSearchTitle": "Search",
+    "moreSearchSubtitle": "Find anything",
+    "moreBackupTitle": "Backup & Restore",
+    "moreBackupSubtitle": "Local backups",
+    "moreSettingsTitle": "Settings",
+    "moreSettingsSubtitle": "Customize your app",
+    "moreOnboardingTitle": "Onboarding",
+    "moreOnboardingSubtitle": "View intro again",
+
+    "filterThisMonth": "This Month",
+    "filterThisYear": "This Year",
+    "filterAllTime": "All Time",
+    "filterCustom": "Custom",
+
+    "dashboardOverspendingTitle": "Over budget this month",
+    "dashboardOverspendingBy": "{amount} over",
+    "@dashboardOverspendingBy": {
+        "placeholders": {
+            "amount": {
+                "type": "String"
+            }
+        }
+    },
+    "dashboardOverspendingViewBudget": "View Budget",
+
+    "lockEnterPin": "Enter PIN",
+    "lockUnlockApp": "Unlock ExpenseMate",
+    "backupExportTitle": "Backup & Export",
+    "calendarUpcomingBills": "Upcoming bills",
+    "calendarTransactionsHeader": "Transactions",
+    "calendarAutoLog": "Auto-log",
+    "settingsSampleLabel": "Sample: {value}",
+    "@settingsSampleLabel": {
+        "placeholders": {
+            "value": {
+                "type": "String"
+            }
+        }
+    },
+    "weekdaySunday": "Sunday",
+    "weekdayMonday": "Monday",
+
+    "paywallTitleTrial": "Unlock ExpenseMate",
+    "paywallTitleExpired": "Your free trial has ended",
+    "paywallSubtitleTrial": "{days} days left in your free trial. Unlock forever with a one-time payment.",
+    "@paywallSubtitleTrial": {
+        "placeholders": {
+            "days": {
+                "type": "int"
+            }
+        }
+    },
+    "paywallSubtitleExpired": "Continue tracking your money — one-time payment, no subscription.",
+    "paywallFeatureOffline": "Works completely offline",
+    "paywallFeatureScanner": "Smart receipt scanner",
+    "paywallFeatureReports": "Detailed reports & charts",
+    "paywallFeatureBudgets": "Budgets & bill reminders",
+    "paywallFeaturePrivacy": "PIN & biometric lock",
+    "paywallFeatureLanguages": "6 languages",
+    "paywallBuyButton": "Unlock forever · {price}",
+    "@paywallBuyButton": {
+        "placeholders": {
+            "price": {
+                "type": "String"
+            }
+        }
+    },
+    "paywallRestore": "Restore purchase",
+    "paywallFinePrint": "One-time payment. No subscription. No auto-renewal.",
+    "paywallErrorGeneric": "Purchase couldn't start. Try again.",
+    "paywallProductUnavailable": "Store isn't reachable right now. Check your connection and try again.",
+    "paywallRestoreNone": "No previous purchase found on this account.",
+    "paywallPending": "Your purchase is being processed. You'll get access once it clears."
+}

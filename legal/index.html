@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Privacy Policy · ExpenseMate</title>
+  <style>
+    :root {
+      --bg: #FDFBFF;
+      --surface: #FFFFFF;
+      --ink: #1D1B20;
+      --muted: #5E5B65;
+      --accent: #6750A4;
+      --border: #E7E0EC;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #141218;
+        --surface: #1D1B20;
+        --ink: #E6E1E9;
+        --muted: #A5A0AA;
+        --accent: #D0BCFF;
+        --border: #2B292F;
+      }
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--ink);
+      font: 400 16px/1.65 -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+    .container {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 48px 24px 96px;
+    }
+    .header {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding-bottom: 32px;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 32px;
+    }
+    .logo {
+      width: 56px;
+      height: 56px;
+      border-radius: 14px;
+      background: linear-gradient(135deg, #8B7CE0 0%, #6750A4 55%, #3E2A7A 100%);
+      color: #fff;
+      font-weight: 900;
+      font-size: 30px;
+      display: grid;
+      place-items: center;
+      box-shadow: 0 8px 24px rgba(103, 80, 164, 0.35);
+    }
+    .brand h1 {
+      margin: 0 0 4px;
+      font-size: 22px;
+      font-weight: 800;
+      letter-spacing: -0.4px;
+    }
+    .brand p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 13px;
+    }
+    h2 {
+      margin-top: 40px;
+      margin-bottom: 12px;
+      font-size: 20px;
+      font-weight: 800;
+      letter-spacing: -0.3px;
+    }
+    p, ul { margin: 0 0 14px; }
+    ul { padding-left: 22px; }
+    ul li { margin-bottom: 6px; }
+    strong { color: var(--ink); font-weight: 700; }
+    .callout {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-left: 4px solid var(--accent);
+      padding: 16px 18px;
+      border-radius: 12px;
+      margin: 18px 0;
+    }
+    a {
+      color: var(--accent);
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
+    }
+    a:hover { border-bottom-color: var(--accent); }
+    .footer {
+      margin-top: 56px;
+      padding-top: 24px;
+      border-top: 1px solid var(--border);
+      color: var(--muted);
+      font-size: 13px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <div class="logo">E</div>
+      <div class="brand">
+        <h1>ExpenseMate</h1>
+        <p>Privacy Policy · Last updated July 2026</p>
+      </div>
+    </div>
+
+    <div class="callout">
+      <strong>TL;DR:</strong> ExpenseMate is a fully offline app. We collect nothing, store nothing on our servers, and share nothing. Everything you enter stays on your device.
+    </div>
+
+    <h2>What we collect</h2>
+    <p><strong>Nothing.</strong> ExpenseMate does not have servers, and we do not collect, receive, or process any personal data.</p>
+
+    <h2>What is stored on your device</h2>
+    <p>The following information is stored <strong>only on your device</strong> in a local SQLite database:</p>
+    <ul>
+      <li>Expenses (amount, category, merchant, payment method, notes, date)</li>
+      <li>Income entries</li>
+      <li>Budgets and category-specific limits</li>
+      <li>Shopping lists and items</li>
+      <li>Recurring expense rules</li>
+      <li>Application settings (currency, theme, PIN hash)</li>
+      <li>Receipt images you attach to expenses</li>
+    </ul>
+    <p>You control all of this data. Deleting the app removes it entirely.</p>
+
+    <h2>Permissions and why we ask</h2>
+    <ul>
+      <li><strong>Camera</strong> — Used only when you tap "Scan a receipt" or "Attach receipt" to capture a photo. Images are saved to your device's local storage. They are never uploaded.</li>
+      <li><strong>Photo library</strong> — Used only when you choose to attach an existing photo as a receipt. Images are read from your device only.</li>
+      <li><strong>Biometric (Face ID / Fingerprint)</strong> — Used only if you enable PIN + biometric unlock. The biometric check is performed by your device's operating system; ExpenseMate never sees or stores your biometric data.</li>
+      <li><strong>Notifications</strong> — Used only if you enable daily / weekly / budget / bill reminders. Notifications are generated on your device and delivered locally. No push server is involved.</li>
+      <li><strong>Vibrate / Boot completed</strong> — Used only so scheduled reminders survive a device restart and provide subtle haptic feedback.</li>
+    </ul>
+
+    <h2>Cloud services, analytics, and advertising</h2>
+    <p>ExpenseMate contains:</p>
+    <ul>
+      <li><strong>No third-party analytics</strong> (no Firebase, Google Analytics, Amplitude, etc.)</li>
+      <li><strong>No advertising SDKs</strong></li>
+      <li><strong>No crash reporting services</strong></li>
+      <li><strong>No tracking pixels or identifiers</strong></li>
+    </ul>
+    <p>Because there are no servers, no cloud accounts, and no network calls, there is no user data to collect, sell, or share.</p>
+
+    <h2>Backup and export</h2>
+    <p>The app provides an optional backup feature that creates a copy of your local SQLite database on your device. You can share that file via your device's standard share sheet (email, cloud drive, AirDrop, etc.) — but only if you explicitly choose to. ExpenseMate never uploads or shares the backup automatically.</p>
+    <p>Similarly, exports to CSV, Excel, or PDF are generated on-device and saved locally. Sharing them is entirely at your discretion.</p>
+
+    <h2>Children's privacy</h2>
+    <p>ExpenseMate is intended for users <strong>18 and older</strong> and is not directed at children. Because we do not collect any information, we do not knowingly collect data from anyone.</p>
+
+    <h2>Changes to this policy</h2>
+    <p>We may update this policy from time to time. When we do, the "Last updated" date at the top will change. If material changes occur, we will announce them via the app's release notes.</p>
+
+    <h2>Contact</h2>
+    <p>If you have questions about this privacy policy, contact us at:</p>
+    <p><a href="mailto:johneki8215@gmail.com">johneki8215@gmail.com</a></p>
+
+    <div class="footer">
+      © 2026 ExpenseMate · Fully offline, always
+    </div>
+  </div>
+</body>
+</html>
