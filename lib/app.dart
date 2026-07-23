@@ -3,7 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'core/router/app_router.dart';
 import 'core/theme/app_theme.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'l10n/app_localizations.dart';
 import 'presentation/providers/format_prefs_provider.dart';
 import 'presentation/providers/locale_provider.dart';
 import 'presentation/providers/premium_provider.dart';
