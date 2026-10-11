@@ -21,10 +21,14 @@ Future<void> main() async {
   }
   await NotificationService.instance.init();
   await RecurringMaterializer.materializeDue(db.db);
-  // Init IAP after Flutter bindings so purchase stream is live before UI.
-  await PurchaseService.instance.init();
 
   final settings = SettingsRepository(db);
+  // Init IAP after Flutter bindings so the purchase stream is live before UI.
+  // `settings` is a second home for the trial clock alone: secure storage can
+  // be wiped on its own, and losing it must not grant a fresh 14 days. Store
+  // queries run in the background so launch isn't blocked on the network.
+  await PurchaseService.instance.init(mirror: settings);
+
   final hasOnboarded = (await settings.get(AppConstants.kHasOnboarded)) == 'true';
 
   runApp(

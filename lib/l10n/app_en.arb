@@ -53,10 +53,22 @@
     "commonPaymentMethod": "Payment method",
     "commonMonth": "Month",
     "commonWeek": "Week",
+    "commonTwoWeeks": "2 wks",
     "commonYear": "Year",
 
     "dashboardTitle": "ExpenseMate",
     "dashboardOverview": "Overview",
+    "dashboardGreeting": "Hi, {name}",
+    "@dashboardGreeting": {
+        "placeholders": {
+            "name": {
+                "type": "String"
+            }
+        }
+    },
+    "onboardNameTitle": "What should we call you?",
+    "onboardNameSubtitle": "So we can greet you when you open the app.",
+    "onboardNameHint": "Your name",
     "dashboardMonthlyIncome": "Monthly Income",
     "dashboardMonthlyExpenses": "Monthly Expenses",
     "dashboardRemainingBudget": "Remaining Budget",
@@ -322,6 +334,7 @@
     "commonAll": "All",
     "commonAny": "Any",
     "commonError": "Error",
+    "commonNoData": "No data yet",
     "actionClear": "Clear",
     "actionApply": "Apply",
     "actionAttach": "Attach",
@@ -342,6 +355,23 @@
     "backupExportExcelBody": "XLSX file with all your expenses.",
     "backupExportPdfTitle": "Export Expenses as PDF",
     "backupExportPdfBody": "Formatted PDF report of your expenses.",
+    "backupExportCsvAction": "Export CSV",
+    "backupExportExcelAction": "Export Excel",
+    "backupExportPdfAction": "Export PDF",
+    "backupPdfPreparedFor": "Prepared for {name}",
+    "backupRestoreSuccessTitle": "Restore complete",
+    "backupRestoreSuccessBody": "ExpenseMate needs to close so your restored data loads correctly. Reopen it from your home screen.",
+    "backupRestoreCloseApp": "Close app",
+    "backupRestoreInvalidFile": "That file isn't a valid ExpenseMate backup.",
+    "backupRestoreCancelled": "Restore cancelled.",
+    "backupRestoreError": "Restore failed. Your existing data is safe.",
+    "@backupPdfPreparedFor": {
+        "placeholders": {
+            "name": {
+                "type": "String"
+            }
+        }
+    },
     "backupRestoreConfirmTitle": "Restore backup?",
     "backupRestoreConfirmBody": "This will replace your current data. You will need to restart the app afterward.",
     "searchHint": "Search expenses, lists, notes…",
@@ -383,6 +413,14 @@
         }
     },
     "dashboardOverspendingViewBudget": "View Budget",
+    "dashboardOverspendingMore": "+{count} more",
+    "@dashboardOverspendingMore": {
+        "placeholders": {
+            "count": {
+                "type": "int"
+            }
+        }
+    },
 
     "lockEnterPin": "Enter PIN",
     "lockUnlockApp": "Unlock ExpenseMate",
@@ -431,5 +469,6 @@
     "paywallErrorGeneric": "Purchase couldn't start. Try again.",
     "paywallProductUnavailable": "Store isn't reachable right now. Check your connection and try again.",
     "paywallRestoreNone": "No previous purchase found on this account.",
-    "paywallPending": "Your purchase is being processed. You'll get access once it clears."
+    "paywallPending": "Your purchase is being processed. You'll get access once it clears.",
+    "paywallRetry": "Try again"
 }

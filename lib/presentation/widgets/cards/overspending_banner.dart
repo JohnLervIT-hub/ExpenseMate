@@ -27,10 +27,10 @@ class OverspendingBanner extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.fromLTRB(20, 8, 20, 0),
       child: Card(
-        color: AppColors.danger.withOpacity(0.08),
+        color: AppColors.danger.withValues(alpha: 0.08),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(16),
-          side: BorderSide(color: AppColors.danger.withOpacity(0.3)),
+          side: BorderSide(color: AppColors.danger.withValues(alpha: 0.3)),
         ),
         child: Padding(
           padding: const EdgeInsets.fromLTRB(16, 14, 16, 12),
@@ -39,7 +39,8 @@ class OverspendingBanner extends StatelessWidget {
             children: [
               Row(
                 children: [
-                  const Icon(Icons.warning_amber_rounded, color: AppColors.danger),
+                  const Icon(Icons.warning_amber_rounded,
+                      color: AppColors.danger, size: 20),
                   const SizedBox(width: 8),
                   Expanded(
                     child: Text(
@@ -60,7 +61,8 @@ class OverspendingBanner extends StatelessWidget {
                     children: [
                       CircleAvatar(
                         radius: 12,
-                        backgroundColor: Color(it.category.colorValue).withOpacity(0.2),
+                        backgroundColor:
+                            Color(it.category.colorValue).withValues(alpha: 0.2),
                         child: Icon(
                           DefaultCategories.iconFor(it.category.iconCode),
                           size: 14,
@@ -71,15 +73,14 @@ class OverspendingBanner extends StatelessWidget {
                       Expanded(
                         child: Text(
                           it.category.name,
+                          overflow: TextOverflow.ellipsis,
                           style: theme.textTheme.bodyMedium?.copyWith(
                             fontWeight: FontWeight.w600,
                           ),
                         ),
                       ),
                       Text(
-                        l.dashboardOverspendingBy(
-                          formatCurrency(it.overAmount, symbol: currency),
-                        ),
+                        '+${formatCurrency(it.overAmount, symbol: currency)}',
                         style: theme.textTheme.bodyMedium?.copyWith(
                           fontWeight: FontWeight.w700,
                           color: AppColors.danger,

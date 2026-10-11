@@ -10,6 +10,7 @@ import '../../../core/utils/formatters.dart';
 import '../../../data/models/category.dart';
 import '../../../data/models/expense.dart';
 import '../../providers/currency_provider.dart';
+import '../../providers/calendar_provider.dart';
 import '../../providers/dashboard_provider.dart';
 import '../../../core/extensions/l10n_extension.dart';
 import '../../providers/expenses_provider.dart';
@@ -124,6 +125,7 @@ class _ExpenseFormScreenState extends ConsumerState<ExpenseFormScreen> {
     }
     ref.invalidate(expensesProvider);
     ref.invalidate(dashboardSummaryProvider);
+    ref.invalidate(calendarMonthProvider);
     if (!mounted) return;
     context.pop();
   }
@@ -172,6 +174,7 @@ class _ExpenseFormScreenState extends ConsumerState<ExpenseFormScreen> {
     await ref.read(expenseRepositoryProvider).delete(_existing!.id);
     ref.invalidate(expensesProvider);
     ref.invalidate(dashboardSummaryProvider);
+    ref.invalidate(calendarMonthProvider);
     if (!mounted) return;
     context.pop();
   }

@@ -53,13 +53,13 @@ class ShoppingListDetailScreen extends ConsumerWidget {
         top: false,
         child: itemsAsync.when(
           loading: () => const AppLoadingIndicator(),
-          error: (e, _) => Center(child: Text('Error: $e')),
+          error: (e, _) => Center(child: Text(context.l10n.commonError)),
           data: (items) {
             if (items.isEmpty) {
-              return const EmptyState(
+              return EmptyState(
                 icon: Icons.checklist_rounded,
-                title: 'No items yet',
-                subtitle: 'Tap + to add your first item.',
+                title: context.l10n.groceryEmptyItemsTitle,
+                subtitle: context.l10n.groceryEmptyItemsSubtitle,
               );
             }
             return Column(

@@ -156,6 +156,9 @@ class AppLocalizationsAr extends AppLocalizations {
   String get commonWeek => 'أسبوع';
 
   @override
+  String get commonTwoWeeks => 'أسبوعان';
+
+  @override
   String get commonYear => 'سنة';
 
   @override
@@ -163,6 +166,20 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get dashboardOverview => 'نظرة عامة';
+
+  @override
+  String dashboardGreeting(String name) {
+    return 'مرحبًا، $name';
+  }
+
+  @override
+  String get onboardNameTitle => 'بماذا نناديك؟';
+
+  @override
+  String get onboardNameSubtitle => 'لنرحّب بك عند فتح التطبيق.';
+
+  @override
+  String get onboardNameHint => 'اسمك';
 
   @override
   String get dashboardMonthlyIncome => 'الدخل الشهري';
@@ -819,6 +836,9 @@ class AppLocalizationsAr extends AppLocalizations {
   String get commonError => 'خطأ';
 
   @override
+  String get commonNoData => 'لا توجد بيانات بعد';
+
+  @override
   String get actionClear => 'مسح';
 
   @override
@@ -878,6 +898,40 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get backupExportPdfBody => 'تقرير PDF بمصروفاتك.';
+
+  @override
+  String get backupExportCsvAction => 'تصدير CSV';
+
+  @override
+  String get backupExportExcelAction => 'تصدير Excel';
+
+  @override
+  String get backupExportPdfAction => 'تصدير PDF';
+
+  @override
+  String backupPdfPreparedFor(String name) {
+    return 'أُعدّ لـ $name';
+  }
+
+  @override
+  String get backupRestoreSuccessTitle => 'اكتملت الاستعادة';
+
+  @override
+  String get backupRestoreSuccessBody =>
+      'يجب إغلاق ExpenseMate لتحميل البيانات المستعادة. أعد فتحه من الشاشة الرئيسية.';
+
+  @override
+  String get backupRestoreCloseApp => 'إغلاق التطبيق';
+
+  @override
+  String get backupRestoreInvalidFile =>
+      'هذا الملف ليس نسخة احتياطية صالحة من ExpenseMate.';
+
+  @override
+  String get backupRestoreCancelled => 'تم إلغاء الاستعادة.';
+
+  @override
+  String get backupRestoreError => 'فشلت الاستعادة. بياناتك الحالية آمنة.';
 
   @override
   String get backupRestoreConfirmTitle => 'استعادة النسخة الاحتياطية؟';
@@ -978,6 +1032,11 @@ class AppLocalizationsAr extends AppLocalizations {
   String get dashboardOverspendingViewBudget => 'عرض الميزانية';
 
   @override
+  String dashboardOverspendingMore(int count) {
+    return '+$count أخرى';
+  }
+
+  @override
   String get lockUnlockApp => 'فتح ExpenseMate';
 
   @override
@@ -1060,4 +1119,7 @@ class AppLocalizationsAr extends AppLocalizations {
   @override
   String get paywallPending =>
       'جاري معالجة عملية الشراء. ستحصل على الوصول عند اكتمالها.';
+
+  @override
+  String get paywallRetry => 'حاول مرة أخرى';
 }

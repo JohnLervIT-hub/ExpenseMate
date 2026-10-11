@@ -33,6 +33,15 @@ import '../constants/app_constants.dart';
 final _rootKey = GlobalKey<NavigatorState>();
 final _shellKey = GlobalKey<NavigatorState>();
 
+/// `?from=` marker that tells the paywall it was opened on purpose, so it
+/// renders a closable sheet instead of the inescapable trial-expired wall.
+const String _kPaywallFromMore = 'more';
+
+/// Deep link for the "Unlock ExpenseMate" row, which is the only way to buy
+/// before the trial runs out.
+String paywallFromMoreRoute() =>
+    '${Routes.paywall}?from=$_kPaywallFromMore';
+
 class _RouterRefresh extends ChangeNotifier {
   void notify() => notifyListeners();
 }
@@ -60,6 +69,10 @@ final appRouterProvider = Provider<GoRouter>((ref) {
       final atOnboarding = loc == Routes.onboarding;
       final atSplash = loc == Routes.splash;
       final atPaywall = loc == Routes.paywall;
+      // Opened from the "Unlock" row rather than forced here by an expired
+      // trial — this visit is allowed to exist while the user still has access.
+      final voluntaryPaywall =
+          atPaywall && state.uri.queryParameters['from'] == _kPaywallFromMore;
 
       if (atSplash) return null;
 
@@ -71,14 +84,25 @@ final appRouterProvider = Provider<GoRouter>((ref) {
       if (!hasOnboarded && !atOnboarding) return Routes.onboarding;
 
       // Paywall: block app when trial is expired AND user hasn't purchased.
-      if (!premium.hasAccess && !atPaywall) return Routes.paywall;
-      if (atPaywall && premium.hasAccess) return Routes.dashboard;
+      // Backup stays reachable regardless — an unpaid user still owns their
+      // expense history and must be able to export it.
+      if (!premium.hasAccess && !atPaywall && loc != Routes.backup) {
+        return Routes.paywall;
+      }
+      if (atPaywall && premium.hasAccess && !voluntaryPaywall) {
+        return Routes.dashboard;
+      }
 
       return null;
     },
     routes: [
       GoRoute(path: Routes.splash, builder: (_, __) => const SplashScreen()),
-      GoRoute(path: Routes.paywall, builder: (_, __) => const PaywallScreen()),
+      GoRoute(
+        path: Routes.paywall,
+        builder: (_, s) => PaywallScreen(
+          dismissible: s.uri.queryParameters['from'] == _kPaywallFromMore,
+        ),
+      ),
       GoRoute(path: Routes.lock, builder: (_, __) => const LockScreen()),
       GoRoute(path: Routes.onboarding, builder: (_, __) => const OnboardingScreen()),
       GoRoute(path: Routes.pinSetup, builder: (_, __) => const PinSetupScreen()),

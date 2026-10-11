@@ -8,6 +8,7 @@ import '../../../core/constants/default_categories.dart';
 import '../../../core/utils/formatters.dart';
 import '../../../data/models/category.dart';
 import '../../../data/models/recurring_expense.dart';
+import '../../providers/calendar_provider.dart';
 import '../../providers/currency_provider.dart';
 import '../../providers/recurring_provider.dart';
 import '../../providers/repository_providers.dart';
@@ -86,6 +87,7 @@ class _RecurringFormScreenState extends ConsumerState<RecurringFormScreen> {
       await repo.update(r);
     }
     ref.invalidate(recurringExpensesProvider);
+    ref.invalidate(calendarMonthProvider);
     if (!mounted) return;
     context.pop();
   }
@@ -95,7 +97,7 @@ class _RecurringFormScreenState extends ConsumerState<RecurringFormScreen> {
     final ok = await showDialog<bool>(
           context: context,
           builder: (ctx) => AlertDialog(
-            title: const Text('Delete rule?'),
+            title: Text(context.l10n.recurringDeleteRule),
             actions: [
               TextButton(onPressed: () => Navigator.pop(ctx, false), child: Text(context.l10n.actionCancel)),
               FilledButton(onPressed: () => Navigator.pop(ctx, true), child: Text(context.l10n.actionDelete)),
@@ -106,6 +108,7 @@ class _RecurringFormScreenState extends ConsumerState<RecurringFormScreen> {
     if (!ok) return;
     await ref.read(recurringRepositoryProvider).delete(_existing!.id);
     ref.invalidate(recurringExpensesProvider);
+    ref.invalidate(calendarMonthProvider);
     if (!mounted) return;
     context.pop();
   }

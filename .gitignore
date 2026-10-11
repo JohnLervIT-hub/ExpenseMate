@@ -52,3 +52,6 @@ preview/*.aab
 # Local logs and tool state
 flutter_*.log
 .claude/
+
+# Dart obfuscation symbols — archive per release, don't commit.
+debug_symbols/

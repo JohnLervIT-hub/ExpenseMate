@@ -1,18 +1,50 @@
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 
+import '../../../core/extensions/l10n_extension.dart';
+
 class MonthlyTrendChart extends StatelessWidget {
   final List<double> values;
   final List<String> labels;
+  final Color? lineColor;
 
-  const MonthlyTrendChart({super.key, required this.values, this.labels = const []});
+  const MonthlyTrendChart({
+    super.key,
+    required this.values,
+    this.labels = const [],
+    this.lineColor,
+  });
 
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     final maxV = values.isEmpty ? 0.0 : values.reduce((a, b) => a > b ? a : b);
-    final ceiling = maxV <= 0 ? 100.0 : maxV * 1.2;
-    final color = theme.colorScheme.primary;
+    if (values.isEmpty || maxV <= 0) {
+      return SizedBox(
+        height: 200,
+        child: Center(
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Icon(
+                Icons.show_chart_rounded,
+                size: 40,
+                color: theme.colorScheme.outlineVariant,
+              ),
+              const SizedBox(height: 8),
+              Text(
+                context.l10n.commonNoData,
+                style: theme.textTheme.bodyMedium?.copyWith(
+                  color: theme.colorScheme.onSurfaceVariant,
+                ),
+              ),
+            ],
+          ),
+        ),
+      );
+    }
+    final ceiling = maxV * 1.2;
+    final color = lineColor ?? theme.colorScheme.primary;
     final spots = <FlSpot>[
       for (var i = 0; i < values.length; i++) FlSpot(i.toDouble(), values[i]),
     ];

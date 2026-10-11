@@ -7,6 +7,7 @@ import '../../../core/constants/app_constants.dart';
 import '../../../core/utils/formatters.dart';
 import '../../../data/models/category.dart';
 import '../../../data/models/expense.dart';
+import '../../providers/calendar_provider.dart';
 import '../../providers/currency_provider.dart';
 import '../../providers/dashboard_provider.dart';
 import '../../providers/expenses_provider.dart';
@@ -118,6 +119,7 @@ class _ExpensesScreenState extends ConsumerState<ExpensesScreen> {
             child: RefreshIndicator(
               onRefresh: () async {
                 ref.invalidate(expensesProvider);
+                ref.invalidate(calendarMonthProvider);
                 await ref.read(expensesProvider(_filter).future);
               },
               child: expensesAsync.when(
@@ -252,6 +254,7 @@ class _ExpensesScreenState extends ConsumerState<ExpensesScreen> {
                   await repo.delete(e.id);
                   ref.invalidate(expensesProvider);
                   ref.invalidate(dashboardSummaryProvider);
+                  ref.invalidate(calendarMonthProvider);
                   if (!mounted) return;
                   messenger.showSnackBar(
                     SnackBar(
@@ -262,6 +265,7 @@ class _ExpensesScreenState extends ConsumerState<ExpensesScreen> {
                           await repo.insert(e.copyWith(id: 0));
                           ref.invalidate(expensesProvider);
                           ref.invalidate(dashboardSummaryProvider);
+                          ref.invalidate(calendarMonthProvider);
                         },
                       ),
                     ),
@@ -305,6 +309,7 @@ class _ExpensesScreenState extends ConsumerState<ExpensesScreen> {
                 await repo.duplicate(e.id);
                 ref.invalidate(expensesProvider);
                 ref.invalidate(dashboardSummaryProvider);
+                ref.invalidate(calendarMonthProvider);
               },
             ),
             ListTile(
@@ -314,6 +319,7 @@ class _ExpensesScreenState extends ConsumerState<ExpensesScreen> {
                 Navigator.pop(ctx);
                 await repo.toggleFavorite(e.id);
                 ref.invalidate(expensesProvider);
+                ref.invalidate(calendarMonthProvider);
               },
             ),
             ListTile(
@@ -324,6 +330,7 @@ class _ExpensesScreenState extends ConsumerState<ExpensesScreen> {
                 await repo.delete(e.id);
                 ref.invalidate(expensesProvider);
                 ref.invalidate(dashboardSummaryProvider);
+                ref.invalidate(calendarMonthProvider);
               },
             ),
           ],

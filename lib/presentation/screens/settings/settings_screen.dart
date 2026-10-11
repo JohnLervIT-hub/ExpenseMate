@@ -9,6 +9,7 @@ import '../../../core/extensions/l10n_extension.dart';
 import '../../../core/utils/formatters.dart';
 import '../../../data/database/demo_seed.dart';
 import '../../providers/auth_provider.dart';
+import '../../providers/calendar_provider.dart';
 import '../../providers/format_prefs_provider.dart';
 import '../../providers/locale_provider.dart';
 import '../../providers/notification_prefs_provider.dart';
@@ -513,6 +514,7 @@ class SettingsScreen extends ConsumerWidget {
       ref.invalidate(shoppingListsProvider);
       ref.invalidate(shoppingItemsProvider);
       ref.invalidate(categoriesProvider);
+      ref.invalidate(calendarMonthProvider);
       messenger.showSnackBar(
         SnackBar(content: Text(context.l10n.settingsResetSuccess)),
       );

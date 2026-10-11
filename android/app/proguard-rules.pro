@@ -35,6 +35,12 @@
 # ---------- image_picker ----------
 -keep class io.flutter.plugins.imagepicker.** { *; }
 
+# ---------- Google Play Billing ----------
+# The library ships consumer rules, but release builds now minify, and a
+# stripped billing class means a paywall that can never complete a purchase.
+-keep class com.android.billingclient.** { *; }
+-dontwarn com.android.billingclient.**
+
 # ---------- Google Play Services (ML Kit dep) ----------
 -keep class com.google.android.gms.** { *; }
 -dontwarn com.google.android.gms.**

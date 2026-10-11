@@ -11,6 +11,7 @@ class AppConstants {
   static const String kBiometricEnabled = 'biometric_enabled';
   static const String kHasOnboarded = 'has_onboarded';
   static const String kBackupPath = 'backup_path';
+  static const String kUserName = 'user_name';
 
   // Premium / IAP (stored in flutter_secure_storage)
   static const String kInstallTs = 'install_ts';

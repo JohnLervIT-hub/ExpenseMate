@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../core/extensions/l10n_extension.dart';
+import '../../../core/services/backup_service.dart';
 import '../../../core/utils/formatters.dart';
 
 import '../../providers/repository_providers.dart';
+import '../../providers/user_name_provider.dart';
 
 class BackupScreen extends ConsumerStatefulWidget {
   const BackupScreen({super.key});
@@ -59,14 +62,15 @@ class _BackupScreenState extends ConsumerState<BackupScreen> {
   }
 
   Future<void> _restore() async {
+    final l = context.l10n;
     final ok = await showDialog<bool>(
           context: context,
           builder: (ctx) => AlertDialog(
-            title: Text(context.l10n.backupRestoreConfirmTitle),
-            content: Text(context.l10n.backupRestoreConfirmBody),
+            title: Text(l.backupRestoreConfirmTitle),
+            content: Text(l.backupRestoreConfirmBody),
             actions: [
-              TextButton(onPressed: () => Navigator.pop(ctx, false), child: Text(context.l10n.actionCancel)),
-              FilledButton(onPressed: () => Navigator.pop(ctx, true), child: Text(context.l10n.backupRestore)),
+              TextButton(onPressed: () => Navigator.pop(ctx, false), child: Text(l.actionCancel)),
+              FilledButton(onPressed: () => Navigator.pop(ctx, true), child: Text(l.backupRestore)),
             ],
           ),
         ) ??
@@ -76,13 +80,47 @@ class _BackupScreenState extends ConsumerState<BackupScreen> {
       _busy = true;
       _status = null;
     });
+    RestoreResult result = RestoreResult.error;
     try {
-      final restored = await ref.read(backupServiceProvider).restoreDatabase();
-      setState(() => _status = restored ? 'Restored. Please restart the app.' : 'Cancelled');
+      result = await ref.read(backupServiceProvider).restoreDatabase();
     } catch (e) {
-      setState(() => _status = 'Restore failed: $e');
+      debugPrint('restore error: $e');
     } finally {
       if (mounted) setState(() => _busy = false);
+    }
+    if (!mounted) return;
+    switch (result) {
+      case RestoreResult.success:
+        // DB is now closed and file replaced. If the user keeps interacting
+        // with the app, every provider call throws. Force a close via a
+        // non-dismissible dialog so they must reopen from Play Store icon.
+        await showDialog<void>(
+          context: context,
+          barrierDismissible: false,
+          builder: (ctx) => PopScope(
+            canPop: false,
+            child: AlertDialog(
+              title: Text(l.backupRestoreSuccessTitle),
+              content: Text(l.backupRestoreSuccessBody),
+              actions: [
+                FilledButton(
+                  onPressed: () => SystemNavigator.pop(),
+                  child: Text(l.backupRestoreCloseApp),
+                ),
+              ],
+            ),
+          ),
+        );
+        break;
+      case RestoreResult.cancelled:
+        setState(() => _status = l.backupRestoreCancelled);
+        break;
+      case RestoreResult.invalidFile:
+        setState(() => _status = l.backupRestoreInvalidFile);
+        break;
+      case RestoreResult.error:
+        setState(() => _status = l.backupRestoreError);
+        break;
     }
   }
 
@@ -126,7 +164,14 @@ class _BackupScreenState extends ConsumerState<BackupScreen> {
           .getAll(start: _rangeStart, end: _rangeEnd);
       final cats = await ref.read(categoryRepositoryProvider).getAll();
       final svc = ref.read(exportServiceProvider);
-      final bytes = await svc.buildExpensesPdf(expenses, cats);
+      final name = ref.read(userNameProvider);
+      final preparedFor =
+          name.isEmpty ? null : context.l10n.backupPdfPreparedFor(name);
+      final bytes = await svc.buildExpensesPdf(
+        expenses,
+        cats,
+        preparedFor: preparedFor,
+      );
       await svc.printOrShare(bytes, 'expenses.pdf');
       setState(() => _status = 'PDF prepared (${expenses.length} rows)');
     } catch (e) {
@@ -146,17 +191,17 @@ class _BackupScreenState extends ConsumerState<BackupScreen> {
         children: [
           _card(
             icon: Icons.cloud_upload_outlined,
-            title: 'Export Database',
-            subtitle: 'Save a copy of your SQLite database locally and share it.',
-            action: 'Export & Share',
+            title: l.backupExportDatabase,
+            subtitle: l.backupExportDatabaseBody,
+            action: l.backupExportShare,
             onTap: _busy ? null : _exportDb,
           ),
           const SizedBox(height: 12),
           _card(
             icon: Icons.restore_rounded,
-            title: 'Restore Database',
-            subtitle: 'Replace current data with a previous backup file.',
-            action: 'Restore',
+            title: l.backupRestoreDatabase,
+            subtitle: l.backupRestoreDatabaseBody,
+            action: l.backupRestore,
             onTap: _busy ? null : _restore,
           ),
           const SizedBox(height: 24),
@@ -164,25 +209,25 @@ class _BackupScreenState extends ConsumerState<BackupScreen> {
           const SizedBox(height: 12),
           _card(
             icon: Icons.description_rounded,
-            title: 'Export Expenses as CSV',
-            subtitle: 'For spreadsheets or manual analysis.',
-            action: 'Export CSV',
+            title: l.backupExportCsvTitle,
+            subtitle: l.backupExportCsvBody,
+            action: l.backupExportCsvAction,
             onTap: _busy ? null : _exportCsv,
           ),
           const SizedBox(height: 12),
           _card(
             icon: Icons.table_chart_rounded,
-            title: 'Export Expenses as Excel',
-            subtitle: 'XLSX file with all your expenses.',
-            action: 'Export Excel',
+            title: l.backupExportExcelTitle,
+            subtitle: l.backupExportExcelBody,
+            action: l.backupExportExcelAction,
             onTap: _busy ? null : _exportExcel,
           ),
           const SizedBox(height: 12),
           _card(
             icon: Icons.picture_as_pdf_rounded,
-            title: 'Export Expenses as PDF',
-            subtitle: 'Formatted PDF report of your expenses.',
-            action: 'Export PDF',
+            title: l.backupExportPdfTitle,
+            subtitle: l.backupExportPdfBody,
+            action: l.backupExportPdfAction,
             onTap: _busy ? null : _exportPdf,
           ),
           if (_busy) ...[

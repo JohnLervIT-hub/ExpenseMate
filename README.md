@@ -82,20 +82,30 @@ The first launch creates `expensemate.db` in the app's Application Documents dir
 
 ## Build
 
+Release Android builds go through `scripts/build_release.sh`, which enables
+Dart obfuscation and writes symbols to `debug_symbols/<version>/`. R8 +
+resource shrinking are on for the Android `release` build type (see
+`android/app/build.gradle` and `android/app/proguard-rules.pro`).
+
+**Android App Bundle (default)**
+```bash
+scripts/build_release.sh
+# Output: build/app/outputs/bundle/release/app-release.aab
+# Symbols: debug_symbols/<version>/
+```
+
 **Android APK**
 ```bash
-flutter build apk --release
+scripts/build_release.sh apk
 # Output: build/app/outputs/flutter-apk/app-release.apk
 ```
 
-**Android App Bundle**
-```bash
-flutter build appbundle --release
-```
+Archive `debug_symbols/<version>/` alongside each released artifact — you
+need it to decode obfuscated stack traces from crash reports.
 
 **iOS**
 ```bash
-flutter build ios --release
+flutter build ios --release --obfuscate --split-debug-info=debug_symbols/ios/ --no-tree-shake-icons
 # Then open ios/Runner.xcworkspace in Xcode to archive
 ```
 

@@ -9,6 +9,7 @@ import '../../../core/theme/app_colors.dart';
 import '../../../core/utils/formatters.dart';
 import '../../providers/currency_provider.dart';
 import '../../providers/dashboard_provider.dart';
+import '../../providers/user_name_provider.dart';
 import '../../providers/repository_providers.dart';
 import '../../widgets/cards/expense_tile.dart';
 import '../../widgets/cards/overspending_banner.dart';
@@ -70,10 +71,17 @@ class DashboardScreen extends ConsumerWidget {
               if (AppConfig.demoMode) const _DemoBanner(),
               Padding(
                 padding: const EdgeInsets.fromLTRB(20, 8, 20, 0),
-                child: Text(
-                  l.dashboardOverview,
-                  style: theme.textTheme.headlineSmall?.copyWith(fontWeight: FontWeight.w800),
-                ),
+                child: Builder(builder: (context) {
+                  final userName = ref.watch(userNameProvider);
+                  final headline = userName.isEmpty
+                      ? l.dashboardOverview
+                      : l.dashboardGreeting(userName);
+                  return Text(
+                    headline,
+                    style: theme.textTheme.headlineSmall
+                        ?.copyWith(fontWeight: FontWeight.w800),
+                  );
+                }),
               ),
               OverspendingBanner(items: s.overBudget, currency: currency),
               const SizedBox(height: 16),

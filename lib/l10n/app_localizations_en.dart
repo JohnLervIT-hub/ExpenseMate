@@ -157,6 +157,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get commonWeek => 'Week';
 
   @override
+  String get commonTwoWeeks => '2 wks';
+
+  @override
   String get commonYear => 'Year';
 
   @override
@@ -164,6 +167,21 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get dashboardOverview => 'Overview';
+
+  @override
+  String dashboardGreeting(String name) {
+    return 'Hi, $name';
+  }
+
+  @override
+  String get onboardNameTitle => 'What should we call you?';
+
+  @override
+  String get onboardNameSubtitle =>
+      'So we can greet you when you open the app.';
+
+  @override
+  String get onboardNameHint => 'Your name';
 
   @override
   String get dashboardMonthlyIncome => 'Monthly Income';
@@ -827,6 +845,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get commonError => 'Error';
 
   @override
+  String get commonNoData => 'No data yet';
+
+  @override
   String get actionClear => 'Clear';
 
   @override
@@ -887,6 +908,41 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get backupExportPdfBody => 'Formatted PDF report of your expenses.';
+
+  @override
+  String get backupExportCsvAction => 'Export CSV';
+
+  @override
+  String get backupExportExcelAction => 'Export Excel';
+
+  @override
+  String get backupExportPdfAction => 'Export PDF';
+
+  @override
+  String backupPdfPreparedFor(String name) {
+    return 'Prepared for $name';
+  }
+
+  @override
+  String get backupRestoreSuccessTitle => 'Restore complete';
+
+  @override
+  String get backupRestoreSuccessBody =>
+      'ExpenseMate needs to close so your restored data loads correctly. Reopen it from your home screen.';
+
+  @override
+  String get backupRestoreCloseApp => 'Close app';
+
+  @override
+  String get backupRestoreInvalidFile =>
+      'That file isn\'t a valid ExpenseMate backup.';
+
+  @override
+  String get backupRestoreCancelled => 'Restore cancelled.';
+
+  @override
+  String get backupRestoreError =>
+      'Restore failed. Your existing data is safe.';
 
   @override
   String get backupRestoreConfirmTitle => 'Restore backup?';
@@ -986,6 +1042,11 @@ class AppLocalizationsEn extends AppLocalizations {
   String get dashboardOverspendingViewBudget => 'View Budget';
 
   @override
+  String dashboardOverspendingMore(int count) {
+    return '+$count more';
+  }
+
+  @override
   String get lockUnlockApp => 'Unlock ExpenseMate';
 
   @override
@@ -1070,4 +1131,7 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get paywallPending =>
       'Your purchase is being processed. You\'ll get access once it clears.';
+
+  @override
+  String get paywallRetry => 'Try again';
 }

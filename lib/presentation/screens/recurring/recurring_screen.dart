@@ -6,6 +6,7 @@ import '../../../core/extensions/l10n_extension.dart';
 import '../../../core/constants/app_constants.dart';
 import '../../../core/constants/default_categories.dart';
 import '../../../core/utils/formatters.dart';
+import '../../providers/calendar_provider.dart';
 import '../../providers/currency_provider.dart';
 import '../../providers/dashboard_provider.dart';
 import '../../providers/expenses_provider.dart';
@@ -34,6 +35,7 @@ class RecurringScreen extends ConsumerWidget {
       body: RefreshIndicator(
         onRefresh: () async {
           ref.invalidate(recurringExpensesProvider);
+          ref.invalidate(calendarMonthProvider);
           await ref.read(recurringExpensesProvider.future);
         },
         child: async.when(
@@ -123,6 +125,7 @@ class RecurringScreen extends ConsumerWidget {
                                         .read(recurringRepositoryProvider)
                                         .toggleActive(r.id);
                                     ref.invalidate(recurringExpensesProvider);
+                                    ref.invalidate(calendarMonthProvider);
                                   },
                                 ),
                               ),
@@ -153,6 +156,7 @@ class RecurringScreen extends ConsumerWidget {
                               ref.invalidate(recurringExpensesProvider);
                               ref.invalidate(expensesProvider);
                               ref.invalidate(dashboardSummaryProvider);
+                              ref.invalidate(calendarMonthProvider);
                             }
                           },
                         ),

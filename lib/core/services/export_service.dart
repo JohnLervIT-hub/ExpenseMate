@@ -80,6 +80,7 @@ class ExportService {
     List<Category> categories, {
     String currencySymbol = '\$',
     String title = 'Expenses',
+    String? preparedFor,
   }) async {
     final byId = {for (final c in categories) c.id: c};
     final doc = pw.Document();
@@ -93,6 +94,11 @@ class ExportService {
           pw.SizedBox(height: 8),
           pw.Text('Generated ${formatDate(DateTime.now())}',
               style: const pw.TextStyle(fontSize: 10, color: PdfColors.grey700)),
+          if (preparedFor != null && preparedFor.isNotEmpty) ...[
+            pw.SizedBox(height: 2),
+            pw.Text(preparedFor,
+                style: const pw.TextStyle(fontSize: 10, color: PdfColors.grey700)),
+          ],
           pw.SizedBox(height: 16),
           pw.TableHelper.fromTextArray(
             headerStyle: pw.TextStyle(fontWeight: pw.FontWeight.bold),
@@ -128,6 +134,7 @@ class ExportService {
     required double expenses,
     required double savings,
     String currencySymbol = '\$',
+    String? preparedFor,
   }) async {
     final doc = pw.Document();
     doc.addPage(
@@ -136,6 +143,11 @@ class ExportService {
         margin: const pw.EdgeInsets.all(32),
         build: (context) => [
           pw.Text(title, style: pw.TextStyle(fontSize: 24, fontWeight: pw.FontWeight.bold)),
+          if (preparedFor != null && preparedFor.isNotEmpty) ...[
+            pw.SizedBox(height: 4),
+            pw.Text(preparedFor,
+                style: const pw.TextStyle(fontSize: 10, color: PdfColors.grey700)),
+          ],
           pw.SizedBox(height: 16),
           pw.Row(
             mainAxisAlignment: pw.MainAxisAlignment.spaceAround,

@@ -400,6 +400,12 @@ abstract class AppLocalizations {
   /// **'Week'**
   String get commonWeek;
 
+  /// No description provided for @commonTwoWeeks.
+  ///
+  /// In en, this message translates to:
+  /// **'2 wks'**
+  String get commonTwoWeeks;
+
   /// No description provided for @commonYear.
   ///
   /// In en, this message translates to:
@@ -417,6 +423,30 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Overview'**
   String get dashboardOverview;
+
+  /// No description provided for @dashboardGreeting.
+  ///
+  /// In en, this message translates to:
+  /// **'Hi, {name}'**
+  String dashboardGreeting(String name);
+
+  /// No description provided for @onboardNameTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'What should we call you?'**
+  String get onboardNameTitle;
+
+  /// No description provided for @onboardNameSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'So we can greet you when you open the app.'**
+  String get onboardNameSubtitle;
+
+  /// No description provided for @onboardNameHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Your name'**
+  String get onboardNameHint;
 
   /// No description provided for @dashboardMonthlyIncome.
   ///
@@ -1678,6 +1708,12 @@ abstract class AppLocalizations {
   /// **'Error'**
   String get commonError;
 
+  /// No description provided for @commonNoData.
+  ///
+  /// In en, this message translates to:
+  /// **'No data yet'**
+  String get commonNoData;
+
   /// No description provided for @actionClear.
   ///
   /// In en, this message translates to:
@@ -1797,6 +1833,66 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Formatted PDF report of your expenses.'**
   String get backupExportPdfBody;
+
+  /// No description provided for @backupExportCsvAction.
+  ///
+  /// In en, this message translates to:
+  /// **'Export CSV'**
+  String get backupExportCsvAction;
+
+  /// No description provided for @backupExportExcelAction.
+  ///
+  /// In en, this message translates to:
+  /// **'Export Excel'**
+  String get backupExportExcelAction;
+
+  /// No description provided for @backupExportPdfAction.
+  ///
+  /// In en, this message translates to:
+  /// **'Export PDF'**
+  String get backupExportPdfAction;
+
+  /// No description provided for @backupPdfPreparedFor.
+  ///
+  /// In en, this message translates to:
+  /// **'Prepared for {name}'**
+  String backupPdfPreparedFor(String name);
+
+  /// No description provided for @backupRestoreSuccessTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Restore complete'**
+  String get backupRestoreSuccessTitle;
+
+  /// No description provided for @backupRestoreSuccessBody.
+  ///
+  /// In en, this message translates to:
+  /// **'ExpenseMate needs to close so your restored data loads correctly. Reopen it from your home screen.'**
+  String get backupRestoreSuccessBody;
+
+  /// No description provided for @backupRestoreCloseApp.
+  ///
+  /// In en, this message translates to:
+  /// **'Close app'**
+  String get backupRestoreCloseApp;
+
+  /// No description provided for @backupRestoreInvalidFile.
+  ///
+  /// In en, this message translates to:
+  /// **'That file isn\'t a valid ExpenseMate backup.'**
+  String get backupRestoreInvalidFile;
+
+  /// No description provided for @backupRestoreCancelled.
+  ///
+  /// In en, this message translates to:
+  /// **'Restore cancelled.'**
+  String get backupRestoreCancelled;
+
+  /// No description provided for @backupRestoreError.
+  ///
+  /// In en, this message translates to:
+  /// **'Restore failed. Your existing data is safe.'**
+  String get backupRestoreError;
 
   /// No description provided for @backupRestoreConfirmTitle.
   ///
@@ -1984,6 +2080,12 @@ abstract class AppLocalizations {
   /// **'View Budget'**
   String get dashboardOverspendingViewBudget;
 
+  /// No description provided for @dashboardOverspendingMore.
+  ///
+  /// In en, this message translates to:
+  /// **'+{count} more'**
+  String dashboardOverspendingMore(int count);
+
   /// No description provided for @lockUnlockApp.
   ///
   /// In en, this message translates to:
@@ -2133,6 +2235,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Your purchase is being processed. You\'ll get access once it clears.'**
   String get paywallPending;
+
+  /// No description provided for @paywallRetry.
+  ///
+  /// In en, this message translates to:
+  /// **'Try again'**
+  String get paywallRetry;
 }
 
 class _AppLocalizationsDelegate

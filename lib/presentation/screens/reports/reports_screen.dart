@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../core/extensions/l10n_extension.dart';
+import '../../../core/theme/app_colors.dart';
 
 import '../../../core/utils/date_utils.dart';
 import '../../../core/utils/formatters.dart';
@@ -8,6 +9,7 @@ import '../../../data/models/category.dart';
 import '../../../data/models/expense.dart';
 import '../../providers/currency_provider.dart';
 import '../../providers/repository_providers.dart';
+import '../../providers/user_name_provider.dart';
 import '../../widgets/cards/summary_card.dart';
 import '../../widgets/charts/category_pie_chart.dart';
 import '../../widgets/charts/monthly_bar_chart.dart';
@@ -183,7 +185,11 @@ class _ReportsScreenState extends ConsumerState<ReportsScreen> {
                   alignment: Alignment.centerLeft,
                   child: Text('Expenses by month', style: TextStyle(fontWeight: FontWeight.w700))),
               const SizedBox(height: 12),
-              MonthlyBarChart(values: d.ytdExpenses, labels: monthLabels()),
+              MonthlyBarChart(
+                values: d.ytdExpenses,
+                labels: monthLabels(),
+                barColor: AppColors.danger,
+              ),
             ]),
           ),
         ),
@@ -196,7 +202,11 @@ class _ReportsScreenState extends ConsumerState<ReportsScreen> {
                   alignment: Alignment.centerLeft,
                   child: Text('Income by month', style: TextStyle(fontWeight: FontWeight.w700))),
               const SizedBox(height: 12),
-              MonthlyTrendChart(values: d.ytdIncome, labels: monthLabels()),
+              MonthlyTrendChart(
+                values: d.ytdIncome,
+                labels: monthLabels(),
+                lineColor: AppColors.success,
+              ),
             ]),
           ),
         ),
@@ -290,6 +300,9 @@ class _ReportsScreenState extends ConsumerState<ReportsScreen> {
     final svc = ref.read(exportServiceProvider);
     final currency = ref.read(currencySymbolProvider);
     final catById = {for (final c in d.categories) c.id: c.name};
+    final name = ref.read(userNameProvider);
+    final preparedFor =
+        name.isEmpty ? null : context.l10n.backupPdfPreparedFor(name);
     final bytes = await svc.buildReportPdf(
       title: 'ExpenseMate Report',
       categoryTotals: {
@@ -300,6 +313,7 @@ class _ReportsScreenState extends ConsumerState<ReportsScreen> {
       expenses: d.expensesThisMonth,
       savings: (d.incomeThisMonth - d.expensesThisMonth).clamp(0, double.infinity).toDouble(),
       currencySymbol: currency,
+      preparedFor: preparedFor,
     );
     await svc.printOrShare(bytes, 'report_${DateTime.now().toIso8601String()}.pdf');
   }

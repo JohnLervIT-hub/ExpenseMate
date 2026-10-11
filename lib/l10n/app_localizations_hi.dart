@@ -157,6 +157,9 @@ class AppLocalizationsHi extends AppLocalizations {
   String get commonWeek => 'सप्ताह';
 
   @override
+  String get commonTwoWeeks => '2 सप्ताह';
+
+  @override
   String get commonYear => 'साल';
 
   @override
@@ -164,6 +167,20 @@ class AppLocalizationsHi extends AppLocalizations {
 
   @override
   String get dashboardOverview => 'सारांश';
+
+  @override
+  String dashboardGreeting(String name) {
+    return 'नमस्ते, $name';
+  }
+
+  @override
+  String get onboardNameTitle => 'हम आपको क्या कहें?';
+
+  @override
+  String get onboardNameSubtitle => 'ताकि ऐप खोलने पर हम आपका अभिवादन कर सकें.';
+
+  @override
+  String get onboardNameHint => 'आपका नाम';
 
   @override
   String get dashboardMonthlyIncome => 'मासिक आय';
@@ -823,6 +840,9 @@ class AppLocalizationsHi extends AppLocalizations {
   String get commonError => 'त्रुटि';
 
   @override
+  String get commonNoData => 'अभी तक कोई डेटा नहीं';
+
+  @override
   String get actionClear => 'साफ़';
 
   @override
@@ -883,6 +903,41 @@ class AppLocalizationsHi extends AppLocalizations {
 
   @override
   String get backupExportPdfBody => 'आपके खर्चों की PDF रिपोर्ट.';
+
+  @override
+  String get backupExportCsvAction => 'CSV निर्यात करें';
+
+  @override
+  String get backupExportExcelAction => 'Excel निर्यात करें';
+
+  @override
+  String get backupExportPdfAction => 'PDF निर्यात करें';
+
+  @override
+  String backupPdfPreparedFor(String name) {
+    return '$name के लिए तैयार';
+  }
+
+  @override
+  String get backupRestoreSuccessTitle => 'पुनर्स्थापना पूरी हुई';
+
+  @override
+  String get backupRestoreSuccessBody =>
+      'पुनर्स्थापित डेटा लोड करने के लिए ExpenseMate को बंद करना होगा. होम स्क्रीन से फिर से खोलें.';
+
+  @override
+  String get backupRestoreCloseApp => 'ऐप बंद करें';
+
+  @override
+  String get backupRestoreInvalidFile =>
+      'यह फ़ाइल एक मान्य ExpenseMate बैकअप नहीं है.';
+
+  @override
+  String get backupRestoreCancelled => 'पुनर्स्थापना रद्द की गई.';
+
+  @override
+  String get backupRestoreError =>
+      'पुनर्स्थापना विफल. आपका मौजूदा डेटा सुरक्षित है.';
 
   @override
   String get backupRestoreConfirmTitle => 'बैकअप रिस्टोर करें?';
@@ -982,6 +1037,11 @@ class AppLocalizationsHi extends AppLocalizations {
   String get dashboardOverspendingViewBudget => 'बजट देखें';
 
   @override
+  String dashboardOverspendingMore(int count) {
+    return '+$count और';
+  }
+
+  @override
   String get lockUnlockApp => 'ExpenseMate अनलॉक करें';
 
   @override
@@ -1066,4 +1126,7 @@ class AppLocalizationsHi extends AppLocalizations {
   @override
   String get paywallPending =>
       'आपकी खरीदारी संसाधित हो रही है. पुष्टि होते ही आपको पहुँच मिल जाएगी.';
+
+  @override
+  String get paywallRetry => 'फिर से कोशिश करें';
 }

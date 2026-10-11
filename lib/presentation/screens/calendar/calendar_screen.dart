@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import '../../../core/extensions/l10n_extension.dart';
+import '../../../core/theme/app_colors.dart';
 import 'package:table_calendar/table_calendar.dart';
 
 import '../../../core/utils/formatters.dart';
@@ -52,7 +53,7 @@ class _CalendarScreenState extends ConsumerState<CalendarScreen> {
       ),
       body: async.when(
         loading: () => const AppLoadingIndicator(),
-        error: (e, _) => Center(child: Text('Error: $e')),
+        error: (e, _) => Center(child: Text(context.l10n.commonError)),
         data: (data) {
           final daySelected = data.forDay(_selectedDay);
           final dayUpcoming = data.upcomingFor(_selectedDay);
@@ -72,10 +73,10 @@ class _CalendarScreenState extends ConsumerState<CalendarScreen> {
                   focusedDay: _focusedDay,
                   selectedDayPredicate: (d) => isSameDay(d, _selectedDay),
                   calendarFormat: _format,
-                  availableCalendarFormats: const {
-                    CalendarFormat.month: 'Month',
-                    CalendarFormat.twoWeeks: '2 wks',
-                    CalendarFormat.week: 'Week',
+                  availableCalendarFormats: {
+                    CalendarFormat.month: context.l10n.commonMonth,
+                    CalendarFormat.twoWeeks: context.l10n.commonTwoWeeks,
+                    CalendarFormat.week: context.l10n.commonWeek,
                   },
                   eventLoader: (d) => data.forDay(d),
                   startingDayOfWeek: firstDay == 1
@@ -84,44 +85,44 @@ class _CalendarScreenState extends ConsumerState<CalendarScreen> {
                   headerStyle: HeaderStyle(
                     titleCentered: true,
                     formatButtonShowsNext: false,
-                    titleTextStyle: theme.textTheme.titleMedium!
-                        .copyWith(fontWeight: FontWeight.w700),
+                    titleTextStyle: theme.textTheme.titleMedium
+                        ?.copyWith(fontWeight: FontWeight.w700) ?? const TextStyle(),
                     formatButtonDecoration: BoxDecoration(
                       color: theme.colorScheme.secondaryContainer,
                       borderRadius: BorderRadius.circular(12),
                     ),
-                    formatButtonTextStyle: theme.textTheme.labelMedium!
-                        .copyWith(color: theme.colorScheme.onSecondaryContainer),
+                    formatButtonTextStyle: theme.textTheme.labelMedium
+                        ?.copyWith(color: theme.colorScheme.onSecondaryContainer) ?? const TextStyle(),
                     leftChevronIcon: Icon(Icons.chevron_left_rounded,
                         color: theme.colorScheme.primary),
                     rightChevronIcon: Icon(Icons.chevron_right_rounded,
                         color: theme.colorScheme.primary),
                   ),
                   daysOfWeekStyle: DaysOfWeekStyle(
-                    weekdayStyle: theme.textTheme.labelSmall!,
-                    weekendStyle: theme.textTheme.labelSmall!
-                        .copyWith(color: theme.colorScheme.error),
+                    weekdayStyle: theme.textTheme.labelSmall ?? const TextStyle(),
+                    weekendStyle: theme.textTheme.labelSmall
+                        ?.copyWith(color: theme.colorScheme.error) ?? const TextStyle(),
                   ),
                   calendarStyle: CalendarStyle(
                     outsideDaysVisible: false,
-                    weekendTextStyle: theme.textTheme.bodyMedium!
-                        .copyWith(color: theme.colorScheme.error),
+                    weekendTextStyle: theme.textTheme.bodyMedium
+                        ?.copyWith(color: theme.colorScheme.error) ?? const TextStyle(),
                     selectedDecoration: BoxDecoration(
                       color: theme.colorScheme.primary,
                       shape: BoxShape.circle,
                     ),
-                    selectedTextStyle: theme.textTheme.bodyMedium!.copyWith(
+                    selectedTextStyle: theme.textTheme.bodyMedium?.copyWith(
                       color: theme.colorScheme.onPrimary,
                       fontWeight: FontWeight.w800,
-                    ),
+                    ) ?? const TextStyle(),
                     todayDecoration: BoxDecoration(
                       color: theme.colorScheme.primaryContainer,
                       shape: BoxShape.circle,
                     ),
-                    todayTextStyle: theme.textTheme.bodyMedium!.copyWith(
+                    todayTextStyle: theme.textTheme.bodyMedium?.copyWith(
                       color: theme.colorScheme.onPrimaryContainer,
                       fontWeight: FontWeight.w800,
-                    ),
+                    ) ?? const TextStyle(),
                     markersAlignment: Alignment.bottomCenter,
                     markerSize: 0, // we draw our own dots
                     cellMargin: const EdgeInsets.all(4),
@@ -154,11 +155,11 @@ class _CalendarScreenState extends ConsumerState<CalendarScreen> {
                               const SizedBox(width: 3),
                             if (hasUpcoming)
                               Container(
-                                width: 4,
-                                height: 4,
+                                width: 5,
+                                height: 5,
                                 decoration: BoxDecoration(
-                                  color: theme.colorScheme.tertiary,
-                                  shape: BoxShape.circle,
+                                  color: AppColors.warning,
+                                  borderRadius: BorderRadius.circular(1.5),
                                 ),
                               ),
                           ],
@@ -173,7 +174,15 @@ class _CalendarScreenState extends ConsumerState<CalendarScreen> {
                     });
                   },
                   onFormatChanged: (fmt) => setState(() => _format = fmt),
-                  onPageChanged: (focused) => setState(() => _focusedDay = focused),
+                  onPageChanged: (focused) => setState(() {
+                    _focusedDay = focused;
+                    // Keep selected day inside the visible month so the day panel
+                    // below reflects the month the user just swiped to.
+                    if (_selectedDay.year != focused.year ||
+                        _selectedDay.month != focused.month) {
+                      _selectedDay = DateTime(focused.year, focused.month, 1);
+                    }
+                  }),
                 ),
               ),
               const SizedBox(height: 4),
@@ -203,6 +212,7 @@ class _MonthHeader extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+    final l = context.l10n;
     final upcoming = data.upcomingByDay.values.expand((e) => e).toList()
       ..sort((a, b) => a.nextDue.compareTo(b.nextDue));
     final firstBill = upcoming.isNotEmpty ? upcoming.first : null;
@@ -217,7 +227,7 @@ class _MonthHeader extends StatelessWidget {
           end: Alignment.bottomRight,
           colors: [
             theme.colorScheme.primaryContainer,
-            theme.colorScheme.primaryContainer.withOpacity(0.7),
+            theme.colorScheme.primaryContainer.withValues(alpha: 0.7),
           ],
         ),
       ),
@@ -230,7 +240,7 @@ class _MonthHeader extends StatelessWidget {
                 Text(
                   formatMonthYear(data.month),
                   style: theme.textTheme.labelSmall?.copyWith(
-                    color: theme.colorScheme.onPrimaryContainer.withOpacity(0.75),
+                    color: theme.colorScheme.onPrimaryContainer.withValues(alpha: 0.75),
                     fontWeight: FontWeight.w600,
                   ),
                 ),
@@ -242,9 +252,9 @@ class _MonthHeader extends StatelessWidget {
                   ),
                 ),
                 Text(
-                  '${data.transactionCount} transactions',
+                  l.calendarTransactionsCount(data.transactionCount),
                   style: theme.textTheme.labelSmall?.copyWith(
-                    color: theme.colorScheme.onPrimaryContainer.withOpacity(0.75),
+                    color: theme.colorScheme.onPrimaryContainer.withValues(alpha: 0.75),
                   ),
                 ),
               ],
@@ -261,9 +271,9 @@ class _MonthHeader extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
                   Text(
-                    'Next bill',
+                    l.commonNextBill,
                     style: theme.textTheme.labelSmall?.copyWith(
-                      color: theme.colorScheme.onTertiaryContainer.withOpacity(0.8),
+                      color: theme.colorScheme.onTertiaryContainer.withValues(alpha: 0.8),
                     ),
                   ),
                   Text(
@@ -333,11 +343,11 @@ class _DayPanel extends StatelessWidget {
         ),
         Expanded(
           child: expenses.isEmpty && upcoming.isEmpty
-              ? const Center(
+              ? Center(
                   child: EmptyState(
                     icon: Icons.calendar_today_rounded,
-                    title: 'Nothing on this day',
-                    subtitle: 'Tap a day with a dot to see transactions.',
+                    title: context.l10n.calendarNothingOnDay,
+                    subtitle: context.l10n.calendarNothingOnDaySubtitle,
                   ),
                 )
               : ListView(
@@ -401,7 +411,7 @@ class _DayPanel extends StatelessWidget {
                           );
                         },
                         loading: () => const AppLoadingIndicator(),
-                        error: (e, _) => Text('Error: $e'),
+                        error: (e, _) => Text(context.l10n.commonError),
                       ),
                     ],
                   ],

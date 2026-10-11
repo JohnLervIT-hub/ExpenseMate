@@ -39,12 +39,12 @@ class GroceryScreen extends ConsumerWidget {
           data: (lists) {
             if (lists.isEmpty) {
               return ListView(
-                children: const [
-                  SizedBox(height: 80),
+                children: [
+                  const SizedBox(height: 80),
                   EmptyState(
                     icon: Icons.shopping_cart_rounded,
-                    title: 'No shopping lists',
-                    subtitle: 'Create your first list to start tracking groceries.',
+                    title: context.l10n.groceryEmptyTitle,
+                    subtitle: context.l10n.groceryEmptySubtitle,
                   ),
                 ],
               );
@@ -52,7 +52,7 @@ class GroceryScreen extends ConsumerWidget {
             return ListView(
               padding: const EdgeInsets.only(bottom: 100),
               children: [
-                const SectionHeader(title: 'Your lists'),
+                SectionHeader(title: context.l10n.groceryYourLists),
                 for (final list in lists)
                   Padding(
                     padding: const EdgeInsets.fromLTRB(20, 0, 20, 12),

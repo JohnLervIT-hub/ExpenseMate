@@ -1,6 +1,8 @@
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 
+import '../../../core/theme/app_colors.dart';
+
 class MonthlyBarChart extends StatelessWidget {
   final List<double> values;
   final List<String> labels;
@@ -13,10 +15,14 @@ class MonthlyBarChart extends StatelessWidget {
     this.barColor,
   });
 
+  Color _colorFor(int i, ThemeData theme) {
+    if (barColor != null) return barColor!;
+    return AppColors.chartPalette[i % AppColors.chartPalette.length];
+  }
+
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    final color = barColor ?? theme.colorScheme.primary;
     final maxV = values.isEmpty ? 0.0 : values.reduce((a, b) => a > b ? a : b);
     final ceiling = maxV <= 0 ? 100.0 : maxV * 1.2;
 
@@ -69,7 +75,10 @@ class MonthlyBarChart extends StatelessWidget {
                     gradient: LinearGradient(
                       begin: Alignment.bottomCenter,
                       end: Alignment.topCenter,
-                      colors: [color.withOpacity(0.6), color],
+                      colors: [
+                        _colorFor(i, theme).withValues(alpha: 0.6),
+                        _colorFor(i, theme),
+                      ],
                     ),
                   ),
                 ],

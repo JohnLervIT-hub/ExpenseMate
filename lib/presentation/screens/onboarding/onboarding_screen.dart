@@ -8,6 +8,7 @@ import 'package:go_router/go_router.dart';
 import '../../../core/constants/app_constants.dart';
 import '../../../core/extensions/l10n_extension.dart';
 import '../../providers/onboarding_provider.dart';
+import '../../providers/user_name_provider.dart';
 import '../../widgets/branding/expensemate_logo.dart';
 
 class OnboardingScreen extends ConsumerStatefulWidget {
@@ -76,9 +77,59 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen>
   }
 
   Future<void> _finish() async {
+    final name = await _askForName();
+    if (!mounted) return;
+    if (name != null && name.trim().isNotEmpty) {
+      await ref.read(userNameProvider.notifier).setName(name);
+    }
     await ref.read(hasOnboardedProvider.notifier).markComplete();
     if (!mounted) return;
     context.go(Routes.dashboard);
+  }
+
+  Future<String?> _askForName() async {
+    final l = context.l10n;
+    final ctrl = TextEditingController();
+    return showDialog<String>(
+      context: context,
+      barrierDismissible: false,
+      builder: (ctx) => AlertDialog(
+        title: Text(l.onboardNameTitle),
+        content: Column(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(l.onboardNameSubtitle,
+                style: Theme.of(ctx).textTheme.bodyMedium?.copyWith(
+                      color: Theme.of(ctx).colorScheme.onSurfaceVariant,
+                    )),
+            const SizedBox(height: 16),
+            TextField(
+              controller: ctrl,
+              autofocus: true,
+              textCapitalization: TextCapitalization.words,
+              maxLength: 40,
+              decoration: InputDecoration(
+                hintText: l.onboardNameHint,
+                border: const OutlineInputBorder(),
+                counterText: '',
+              ),
+              onSubmitted: (v) => Navigator.pop(ctx, v),
+            ),
+          ],
+        ),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(ctx, null),
+            child: Text(l.actionSkip),
+          ),
+          FilledButton(
+            onPressed: () => Navigator.pop(ctx, ctrl.text),
+            child: Text(l.actionDone),
+          ),
+        ],
+      ),
+    );
   }
 
   @override
@@ -295,7 +346,12 @@ class _OnboardingPage extends StatelessWidget {
           const SizedBox(height: 40),
           AnimatedDefaultTextStyle(
             duration: const Duration(milliseconds: 400),
-            style: theme.textTheme.headlineMedium!.copyWith(
+            style: theme.textTheme.headlineMedium?.copyWith(
+              fontWeight: FontWeight.w800,
+              height: 1.1,
+              color: isDark ? Colors.white : theme.colorScheme.onSurface,
+            ) ?? TextStyle(
+              fontSize: 28,
               fontWeight: FontWeight.w800,
               height: 1.1,
               color: isDark ? Colors.white : theme.colorScheme.onSurface,
